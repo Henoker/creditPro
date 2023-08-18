@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #local
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
+    'rating.apps.RatingConfig',
 ]
 
 MIDDLEWARE = [
