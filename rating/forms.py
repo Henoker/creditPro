@@ -1,19 +1,14 @@
 from django import forms
-from .models import CreditRating
+from .models import CreditRating, Sector
 
 class CreditRatingForm(forms.ModelForm):
     class Meta:
         model = CreditRating
         fields = [
             'user',
-            'sector',
-            'liquidity_ratio',
-            'leverage_ratio',
-            'profitability_ratio',
-            'debt_service_coverage_ratio',
-            'financial_stmt_quality',
             'maker',
             'checker',
+            'staff',
         ]
 
     def __init__(self, *args, **kwargs):

@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
 
+from accounts.models import CustomUser
+
+
 
 # Create your models here.
 class Sector(models.Model):
@@ -187,6 +190,7 @@ class CreditRating(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     maker = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='maker_ratings', on_delete=models.CASCADE, limit_choices_to={'role': CustomUser.MAKER})
     checker = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='checker_ratings', on_delete=models.CASCADE, limit_choices_to={'role': CustomUser.CHECKER}, null=True, blank=True)
+    staff = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='staff_ratings', on_delete=models.CASCADE, limit_choices_to={'role': CustomUser.STAFF}, null=True, blank=True)
     
     def calculate_rating_score(self, rating_model, parameter_value):
         """

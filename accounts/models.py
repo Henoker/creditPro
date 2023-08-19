@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
         (STAFF, 'staff')
     )
     
-    role = models.CharField(max_length=10, choices=USER_ROLES, default=STAFF)
+    role = models.CharField(max_length=10, choices=USER_ROLES, default=MAKER)
 
     # Add any additional fields you might need for your users
     # For example: phone_number, address, etc.
@@ -22,3 +22,6 @@ class CustomUser(AbstractUser):
 
     def is_checker(self):
         return self.role == self.CHECKER
+    
+    def is_staff_role(self):  # Renamed from is_staff
+        return self.role == self.STAFF

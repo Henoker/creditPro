@@ -2,13 +2,17 @@
 {% extends "_base.html" %}
 {% load static %}
 
-{% block title %}Home{% endblock title %}
+{% block title %}Credit Rating Form{% endblock title %}
 {% block content %}
 <div class="main-wrapper">
-   <h1>This is our home page</h1>
+   <h1>Credit Rating Form</h1>
    {% if user.is_authenticated %}
    <p>Hi {{user.email}}</P>
-    <a href="{% url 'add-rating' %}"> <button type="button" class="btn btn-primary" > Add New rating </button></a>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
     <a href="{% url 'logout' %}">Logout</a>
    {% else %}
    <p>You are not logged in</P>
