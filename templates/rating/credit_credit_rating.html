@@ -1,16 +1,16 @@
 <!-- templates/home.html -->
 {% extends "_base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Credit Rating Form{% endblock title %}
 {% block content %}
-<div class="main-wrapper">
+<div class="mx-auto col-sm-6 col-8  pt-3 mb-3 row justify-content-center">
    <h1>Credit Rating Form</h1>
    {% if user.is_authenticated %}
-   <p>Hi {{user.email}}</P>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit">Submit</button>
     </form>
     <a href="{% url 'logout' %}">Logout</a>

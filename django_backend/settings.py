@@ -37,10 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     #local
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'rating.apps.RatingConfig',
+
+    # Third-party
+    'crispy_forms', # new
+    'crispy_bootstrap5', # new
 ]
 
 MIDDLEWARE = [
@@ -132,3 +137,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# django-crispy-forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" # new
+CRISPY_TEMPLATE_PACK = "bootstrap5" # new
