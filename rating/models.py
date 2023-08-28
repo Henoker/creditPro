@@ -76,8 +76,53 @@ class MarketRiskParameter(models.Model):
     
     def __str__(self):
         return f"{self.market_share} - Market Share"
+    
+class ManagementExperienceRiskParameter(models.Model):
+       
+    MANAGEMENT_EXPERIENCE_CHOICES = [
+        ('if 51% and above of top management have more than 10 years experience', 'if 51% and above of top management have more than 10 years experience'),
+        ('if 51% and above of top management have more than 7 years experience', 'if 51% and above of top management have more than 7 years experience'),
+        ('if 51% and above of top management have more than 3 years experience', 'if 51% and above of top management have more than 3 years experience'),
+        ('if 51% and above of top management have less than 3 years experience', 'if 51% and above of top management have less than 3 years experience')
+    ]
+    
+    management_experience = models.CharField(max_length=100, choices=MANAGEMENT_EXPERIENCE_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.management_experience} - Management experience"
 
+class ManagementQualificationRiskParameter(models.Model):
+       
+    MANAGEMENT_QUALIFICATION_CHOICES = [
+        ('if 51% and above of top management are degree holders and above', 'if 51% and above of top management are degree holders and above'),
+        ('if 51% and above of top management are diploma, degree and above holders', 'if 51% and above of top management are diploma, degree and above holders'),
+        ('if 51% and above of top management are High School, diploma, degree and above holders', 'if 51% and above of top management are High School, diploma, degree and above holders'),
+        ('if 51% and above of top management are below high school graduate', 'if 51% and above of top management are below high school graduate')
+    ]
+    
+    management_qualification = models.CharField(max_length=100, choices=MANAGEMENT_QUALIFICATION_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.management_qualification} - Management qualification"
 
+class ManagemementSuccessionRiskParameter(models.Model):
+       
+    MANAGEMENT_SUCCESSION_CHOICES = [
+        ('ready succession', 'ready succession'),
+        ('succession in question', 'succession in question')
+    ]
+    
+    management_succession = models.CharField(max_length=100, choices=MANAGEMENT_SUCCESSION_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.management_succession} - Management succession"
+    
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, CreditAnalyst, CreditDecision , BusinessRiskParameter, MarketRiskParameter
+from .models import FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, CreditAnalyst, CreditDecision , BusinessRiskParameter, MarketRiskParameter, ManagementExperienceRiskParameter, ManagemementSuccessionRiskParameter, ManagementQualificationRiskParameter
 
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
@@ -65,3 +65,30 @@ class MarketRiskAdmin(admin.ModelAdmin):
     list_per_page = 20  # Number of items to display per page
 
 admin.site.register(MarketRiskParameter, MarketRiskAdmin)
+
+class ManagementExperienceRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('management_experience', 'score', 'description')
+    list_filter = ('management_experience',)
+    search_fields = ('management_experience',)
+    ordering = ('management_experience',)
+    list_per_page = 20  # Number of items to display per page
+
+admin.site.register(ManagementExperienceRiskParameter, ManagementExperienceRiskParameterAdmin)
+
+class ManagementQualificationRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('management_qualification', 'score', 'description')
+    list_filter = ('management_qualification',)
+    search_fields = ('management_qualification',)
+    ordering = ('management_qualification',)
+    list_per_page = 20  # Number of items to display per page
+
+admin.site.register(ManagementQualificationRiskParameter, ManagementQualificationRiskParameterAdmin)
+
+class ManagemementSuccessionRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('management_succession', 'score', 'description')
+    list_filter = ('management_succession',)
+    search_fields = ('management_succession',)
+    ordering = ('management_succession',)
+    list_per_page = 20  # Number of items to display per page
+
+admin.site.register(ManagemementSuccessionRiskParameter, ManagemementSuccessionRiskParameterAdmin)
