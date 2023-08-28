@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, CreditAnalyst, CreditDecision
+from .models import FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, CreditAnalyst, CreditDecision , BusinessRiskParameter, MarketRiskParameter
+
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
     list_display = ('sector', 'measurement', 'min_value', 'max_value', 'score')
@@ -47,3 +48,20 @@ class CreditDecisionAdmin(admin.ModelAdmin):
     list_per_page = 20
 admin.site.register(CreditDecision, CreditDecisionAdmin)
 
+class BusinessRiskAdmin(admin.ModelAdmin):
+    list_display = ('industry_outlook', 'score', 'description')
+    list_filter = ('industry_outlook',)
+    search_fields = ('industry_outlook',)
+    ordering = ('industry_outlook',)
+    list_per_page = 20  # Number of items to display per page
+
+admin.site.register(BusinessRiskParameter, BusinessRiskAdmin)
+
+class MarketRiskAdmin(admin.ModelAdmin):
+    list_display = ('market_share', 'score', 'description')
+    list_filter = ('market_share',)
+    search_fields = ('market_share',)
+    ordering = ('market_share',)
+    list_per_page = 20  # Number of items to display per page
+
+admin.site.register(MarketRiskParameter, MarketRiskAdmin)

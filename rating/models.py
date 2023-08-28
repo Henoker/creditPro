@@ -47,6 +47,36 @@ class QualityOfFinancialStatements(models.Model):
     def __str__(self):
         return f"{self.loan_exposure} - Quality of Financial Statement"
 
+class BusinessRiskParameter(models.Model):
+       
+    INDUSTRY_OUTLOOK_CHOICES = [
+        ('Favorable', 'Favorable'),
+        ('Stable', 'stable'),
+        ('unstable', 'unstable')
+    ]
+    
+    industry_outlook = models.CharField(max_length=100, choices=INDUSTRY_OUTLOOK_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.industry_outlook} - Industy Outlook and Growth"
+
+class MarketRiskParameter(models.Model):
+       
+    MARKET_SHARE_CHOICES = [
+        ('Dominant', 'Dominant'),
+        ('Average', 'Average'),
+        ('weak', 'weak')
+    ]
+    
+    market_share = models.CharField(max_length=100, choices=MARKET_SHARE_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.market_share} - Market Share"
+
 
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
