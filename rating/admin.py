@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, CreditAnalyst, CreditDecision , BusinessRiskParameter, MarketRiskParameter, ManagementExperienceRiskParameter, ManagemementSuccessionRiskParameter, ManagementQualificationRiskParameter
+from .models import FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, CreditAnalyst, CreditDecision , BusinessRiskParameter, MarketRiskParameter, ManagementExperienceRiskParameter, ManagemementSuccessionRiskParameter, ManagementQualificationRiskParameter, LengthOfBorrowingRelationshipRiskParameter, IntegrityOfCustomerRiskParameter
 
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
@@ -7,7 +7,7 @@ class FinancialRiskParameterAdmin(admin.ModelAdmin):
     list_filter = ('sector', 'measurement')
     search_fields = ('sector', 'measurement')
     ordering = ('sector', 'measurement')
-    list_per_page = 20  # Number of items to display per page
+    list_per_page = 20  
 
 admin.site.register(FinancialRiskParameter, FinancialRiskParameterAdmin)
 
@@ -16,8 +16,7 @@ class QualityOfFinancialStatementsAdmin(admin.ModelAdmin):
     list_filter = ('loan_exposure',)
     search_fields = ('loan_exposure',)
     ordering = ('loan_exposure',)
-    list_per_page = 20  # Number of items to display per page
-
+    list_per_page = 20  
 admin.site.register(QualityOfFinancialStatements, QualityOfFinancialStatementsAdmin)
 
 admin.site.register(LoanType)
@@ -62,7 +61,7 @@ class MarketRiskAdmin(admin.ModelAdmin):
     list_filter = ('market_share',)
     search_fields = ('market_share',)
     ordering = ('market_share',)
-    list_per_page = 20  # Number of items to display per page
+    list_per_page = 20  
 
 admin.site.register(MarketRiskParameter, MarketRiskAdmin)
 
@@ -71,7 +70,7 @@ class ManagementExperienceRiskParameterAdmin(admin.ModelAdmin):
     list_filter = ('management_experience',)
     search_fields = ('management_experience',)
     ordering = ('management_experience',)
-    list_per_page = 20  # Number of items to display per page
+    list_per_page = 20  
 
 admin.site.register(ManagementExperienceRiskParameter, ManagementExperienceRiskParameterAdmin)
 
@@ -80,7 +79,7 @@ class ManagementQualificationRiskParameterAdmin(admin.ModelAdmin):
     list_filter = ('management_qualification',)
     search_fields = ('management_qualification',)
     ordering = ('management_qualification',)
-    list_per_page = 20  # Number of items to display per page
+    list_per_page = 20
 
 admin.site.register(ManagementQualificationRiskParameter, ManagementQualificationRiskParameterAdmin)
 
@@ -89,6 +88,24 @@ class ManagemementSuccessionRiskParameterAdmin(admin.ModelAdmin):
     list_filter = ('management_succession',)
     search_fields = ('management_succession',)
     ordering = ('management_succession',)
-    list_per_page = 20  # Number of items to display per page
+    list_per_page = 20  
 
 admin.site.register(ManagemementSuccessionRiskParameter, ManagemementSuccessionRiskParameterAdmin)
+
+class LengthOfBorrowingRelationshipRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('borrowing_length', 'score', 'description')
+    list_filter = ('borrowing_length',)
+    search_fields = ('borrowing_length',)
+    ordering = ('borrowing_length',)
+    list_per_page = 20  
+
+admin.site.register(LengthOfBorrowingRelationshipRiskParameter, LengthOfBorrowingRelationshipRiskParameterAdmin)
+
+class IntegrityOfCustomerRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('Integrity_risk', 'score', 'description')
+    list_filter = ('Integrity_risk',)
+    search_fields = ('Integrity_risk',)
+    ordering = ('Integrity_risk',)
+    list_per_page = 20  
+
+admin.site.register(IntegrityOfCustomerRiskParameter, IntegrityOfCustomerRiskParameterAdmin)

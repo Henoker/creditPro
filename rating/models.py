@@ -122,7 +122,38 @@ class ManagemementSuccessionRiskParameter(models.Model):
     
     def __str__(self):
         return f"{self.management_succession} - Management succession"
+
+class LengthOfBorrowingRelationshipRiskParameter(models.Model):
+       
+    BORROWING_LENGTH_CHOICES = [
+        ('greater than 10 years', 'greater than 10 years'),
+        ('5-9 years', '5-9 years'),
+        ('2-4 years', '2-4 years'),
+        ('1-2 years', '1-2 years'),
+        ('less than 1 year', 'less than 1 year')
+    ]
     
+    borrowing_length = models.CharField(max_length=100, choices=BORROWING_LENGTH_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.borrowing_length} - Length of Borrwing Relationship" 
+    
+class IntegrityOfCustomerRiskParameter(models.Model):
+       
+    INTEGRITY_CHOICES = [
+        ('High', 'High'),
+        ('Medium', 'Medium'),
+        ('Low', 'Low')
+    ]
+    
+    Integrity_risk = models.CharField(max_length=100, choices=INTEGRITY_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.Integrity_risk} - Integrity, Honesty and Coperation with the Bank" 
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
 
