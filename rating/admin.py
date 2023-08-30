@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, CreditAnalyst, CreditDecision , BusinessRiskParameter, MarketRiskParameter, ManagementExperienceRiskParameter, ManagemementSuccessionRiskParameter, ManagementQualificationRiskParameter, LengthOfBorrowingRelationshipRiskParameter, IntegrityOfCustomerRiskParameter
+from .models import (FinancialRiskParameter, QualityOfFinancialStatements, LoanType, Loan, 
+                    CreditAnalyst, CreditDecision , BusinessRiskParameter, MarketRiskParameter, 
+                    ManagementExperienceRiskParameter, ManagemementSuccessionRiskParameter, 
+                    ManagementQualificationRiskParameter, LengthOfBorrowingRelationshipRiskParameter, 
+                    IntegrityOfCustomerRiskParameter, OverdraftSwingHighestDebtRiskParameter, 
+                    OverdraftSwingLowestDebtRiskParameter, OverdraftTurnoverRiskParameter)
 
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
@@ -109,3 +114,30 @@ class IntegrityOfCustomerRiskParameterAdmin(admin.ModelAdmin):
     list_per_page = 20  
 
 admin.site.register(IntegrityOfCustomerRiskParameter, IntegrityOfCustomerRiskParameterAdmin)
+
+class OverdraftSwingHighestDebtRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('highest_debt', 'score', 'description')
+    list_filter = ('highest_debt',)
+    search_fields = ('highest_debt',)
+    ordering = ('highest_debt',)
+    list_per_page = 20  
+
+admin.site.register(OverdraftSwingHighestDebtRiskParameter, OverdraftSwingHighestDebtRiskParameterAdmin)
+
+class OverdraftSwingLowestDebtRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('lowest_debt', 'score', 'description')
+    list_filter = ('lowest_debt',)
+    search_fields = ('lowest_debt',)
+    ordering = ('lowest_debt',)
+    list_per_page = 20  
+
+admin.site.register(OverdraftSwingLowestDebtRiskParameter, OverdraftSwingLowestDebtRiskParameterAdmin)
+
+class OverdraftTurnoverRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('overdraft_turnover', 'score', 'description')
+    list_filter = ('overdraft_turnover',)
+    search_fields = ('overdraft_turnover',)
+    ordering = ('overdraft_turnover',)
+    list_per_page = 20  
+
+admin.site.register(OverdraftTurnoverRiskParameter, OverdraftTurnoverRiskParameterAdmin)

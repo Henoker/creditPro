@@ -154,6 +154,53 @@ class IntegrityOfCustomerRiskParameter(models.Model):
     
     def __str__(self):
         return f"{self.Integrity_risk} - Integrity, Honesty and Coperation with the Bank" 
+    
+class OverdraftSwingHighestDebtRiskParameter(models.Model):
+       
+    HIGHEST_DEBT_CHOICES = [
+        ('greater than 85%', 'greater than 85%'),
+        ('60-84.9%', '60-84.9%'),
+        ('less than 60%', 'less than 60%')
+    ]
+    
+    highest_debt = models.CharField(max_length=100, choices=HIGHEST_DEBT_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.highest_debt} - Overdraft Swing Highest Debt"
+    
+class OverdraftSwingLowestDebtRiskParameter(models.Model):
+       
+    LOWEST_DEBT_CHOICES = [
+        ('at least credit balance within three month', 'at least credit balance within three month'),
+        ('at least credit balance within six month', 'at least credit balance within six month'),
+        ('at least 4% debt balance with a year', 'at least 4% debt balance with a year')
+    ]
+    
+    lowest_debt = models.CharField(max_length=100, choices=LOWEST_DEBT_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.lowest_debt} - Overdraft Swing Lowest Debt"
+    
+class OverdraftTurnoverRiskParameter(models.Model):
+       
+    TURNOVER_CHOICES = [
+        ('greater than 3 times', 'greater than 3 times'),
+        ('2-3 times', '2-3 times'),
+        ('1-1.99 times', '1-1.99 times'),
+        ('less than 1 times', 'less than 1 times')
+    ]
+    
+    overdraft_turnover = models.CharField(max_length=100, choices=TURNOVER_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.overdraft_turnover} - Overdraft Turnover"
+    
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
 
