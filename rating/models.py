@@ -234,7 +234,39 @@ class TermLoanSettledRiskParameter(models.Model):
     
     def __str__(self):
         return f"{self.settled_loan} - Settled Loan Term Loan Performance"  
+
+class LcFacilitySettlementRiskParameter(models.Model):
+       
+    LC_FACILITY_SETTLEMENT_CHOICES = [
+        ('settled within  a week', 'settled within  a week'),
+        ('settled within  three weeks', 'settled within  three weeks'),
+        ('settled within a month', 'settled within a month'),
+        ('settled after a month', 'settled after a month')
+    ]
     
+    settled_lc = models.CharField(max_length=100, choices=LC_FACILITY_SETTLEMENT_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.settled_lc} - Settled LC Facility Loan Performance"   
+
+class LcFacilityTurnoverRiskParameter(models.Model):
+       
+    LC_FACILITY_TURNOVER_CHOICES = [
+        ('settled with regular repayments', 'settled with regular repayments'),
+        ('settled timely but with an elemwnt of irregularity', 'settled timely but with an elemwnt of irregularity'),
+        ('settled within thirty days after due date', 'settled within thirty days after due date'),
+        ('settled between 30 to 89 days after due date', 'settled between 30 to 89 days after due date'),
+        ('settled after NPL or legal action', 'settled after NPL or legal action')
+    ]
+    
+    lc_turnover = models.CharField(max_length=100, choices=LC_FACILITY_TURNOVER_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.lc_turnover} - LC Facility Turnover Loan Performance"       
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
 

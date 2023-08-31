@@ -5,7 +5,8 @@ from .models import (FinancialRiskParameter, QualityOfFinancialStatements, LoanT
                     ManagementQualificationRiskParameter, LengthOfBorrowingRelationshipRiskParameter, 
                     IntegrityOfCustomerRiskParameter, OverdraftSwingHighestDebtRiskParameter, 
                     OverdraftSwingLowestDebtRiskParameter, OverdraftTurnoverRiskParameter, 
-                    TermLoanCurrentRiskParameter, TermLoanSettledRiskParameter)
+                    TermLoanCurrentRiskParameter, TermLoanSettledRiskParameter, 
+                    LcFacilitySettlementRiskParameter, LcFacilityTurnoverRiskParameter )
 
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
@@ -160,3 +161,21 @@ class TermLoanSettledRiskParameterAdmin(admin.ModelAdmin):
     list_per_page = 20  
 
 admin.site.register(TermLoanSettledRiskParameter, TermLoanSettledRiskParameterAdmin)
+
+class LcFacilitySettlementRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('settled_lc', 'score', 'description')
+    list_filter = ('settled_lc',)
+    search_fields = ('settled_lc',)
+    ordering = ('settled_lc',)
+    list_per_page = 20  
+
+admin.site.register(LcFacilitySettlementRiskParameter, LcFacilitySettlementRiskParameterAdmin)
+
+class LcFacilityTurnoverRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('lc_turnover', 'score', 'description')
+    list_filter = ('lc_turnover',)
+    search_fields = ('lc_turnover',)
+    ordering = ('lc_turnover',)
+    list_per_page = 20  
+
+admin.site.register(LcFacilityTurnoverRiskParameter, LcFacilityTurnoverRiskParameterAdmin)
