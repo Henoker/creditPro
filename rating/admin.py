@@ -4,7 +4,8 @@ from .models import (FinancialRiskParameter, QualityOfFinancialStatements, LoanT
                     ManagementExperienceRiskParameter, ManagemementSuccessionRiskParameter, 
                     ManagementQualificationRiskParameter, LengthOfBorrowingRelationshipRiskParameter, 
                     IntegrityOfCustomerRiskParameter, OverdraftSwingHighestDebtRiskParameter, 
-                    OverdraftSwingLowestDebtRiskParameter, OverdraftTurnoverRiskParameter)
+                    OverdraftSwingLowestDebtRiskParameter, OverdraftTurnoverRiskParameter, 
+                    TermLoanCurrentRiskParameter, TermLoanSettledRiskParameter)
 
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
@@ -141,3 +142,21 @@ class OverdraftTurnoverRiskParameterAdmin(admin.ModelAdmin):
     list_per_page = 20  
 
 admin.site.register(OverdraftTurnoverRiskParameter, OverdraftTurnoverRiskParameterAdmin)
+
+class TermLoanCurrentRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('current_loan', 'score', 'description')
+    list_filter = ('current_loan',)
+    search_fields = ('current_loan',)
+    ordering = ('current_loan',)
+    list_per_page = 20  
+
+admin.site.register(TermLoanCurrentRiskParameter, TermLoanCurrentRiskParameterAdmin)
+
+class TermLoanSettledRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('settled_loan', 'score', 'description')
+    list_filter = ('settled_loan',)
+    search_fields = ('settled_loan',)
+    ordering = ('settled_loan',)
+    list_per_page = 20  
+
+admin.site.register(TermLoanSettledRiskParameter, TermLoanSettledRiskParameterAdmin)

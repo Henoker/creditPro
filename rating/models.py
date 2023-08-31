@@ -201,6 +201,40 @@ class OverdraftTurnoverRiskParameter(models.Model):
     def __str__(self):
         return f"{self.overdraft_turnover} - Overdraft Turnover"
     
+class TermLoanCurrentRiskParameter(models.Model):
+       
+    TERM_LOAN_CURRENT_CHOICES = [
+        ('regular repayments', 'regular repayments'),
+        ('5-30 days in arrears', '5-30 days in arrears'),
+        ('31-60 days in arrears', '31-60 days in arrears'),
+        ('more than 60 days in arrears', 'more than 60 days in arrears')
+    ]
+    
+    current_loan = models.CharField(max_length=100, choices=TERM_LOAN_CURRENT_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.current_loan} - Current Loan Term Loan Performance"   
+    
+
+class TermLoanSettledRiskParameter(models.Model):
+       
+    TERM_LOAN_SETTLED_CHOICES = [
+        ('settled with regular repayments', 'settled with regular repayments'),
+        ('settled timely but with an elemwnt of irregularity', 'settled timely but with an elemwnt of irregularity'),
+        ('settled within thirty days after due date', 'settled within thirty days after due date'),
+        ('settled between 30 to 89 days after due date', 'settled between 30 to 89 days after due date'),
+        ('settled after NPL or legal action', 'settled after NPL or legal action')
+    ]
+    
+    settled_loan = models.CharField(max_length=100, choices=TERM_LOAN_SETTLED_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.settled_loan} - Settled Loan Term Loan Performance"  
+    
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
 
