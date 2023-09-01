@@ -254,11 +254,10 @@ class LcFacilitySettlementRiskParameter(models.Model):
 class LcFacilityTurnoverRiskParameter(models.Model):
        
     LC_FACILITY_TURNOVER_CHOICES = [
-        ('settled with regular repayments', 'settled with regular repayments'),
-        ('settled timely but with an elemwnt of irregularity', 'settled timely but with an elemwnt of irregularity'),
-        ('settled within thirty days after due date', 'settled within thirty days after due date'),
-        ('settled between 30 to 89 days after due date', 'settled between 30 to 89 days after due date'),
-        ('settled after NPL or legal action', 'settled after NPL or legal action')
+        ('greater than 3 times', 'greater than 3 times'),
+        ('2-3 times', '2-3 times'),
+        ('1-1.99 times', '1-1.99 times'),
+        ('less than 1 times', 'less than 1 times')
     ]
     
     lc_turnover = models.CharField(max_length=100, choices=LC_FACILITY_TURNOVER_CHOICES)
@@ -266,7 +265,39 @@ class LcFacilityTurnoverRiskParameter(models.Model):
     description = models.TextField()
     
     def __str__(self):
-        return f"{self.lc_turnover} - LC Facility Turnover Loan Performance"       
+        return f"{self.lc_turnover} - LC Facility Turnover Loan Performance"      
+
+class MerchandiseLoanTurnoverRiskParameter(models.Model):
+       
+    MERCHANDISE_TURNOVER_CHOICES = [
+        ('greater than 2 times', 'greater than 2 times'),
+        ('1.25-1.99 times', '1.25-1.99 times'),
+        ('0.5-1.24 times', '0.5-1.24 times'),
+        ('less than 0.5 times', 'less than 0.5 times')
+    ]
+    
+    merchandise_turnover = models.CharField(max_length=100, choices=MERCHANDISE_TURNOVER_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.merchandise_turnover} - Merchandise Loan Turnover Performance"   
+
+class MerchandiseSettlementRiskParameter(models.Model):
+       
+    MERCHANDISE_LOAN_SETTLEMENT_CHOICES = [
+        ('settled all advances within 90 days', 'settled all advances within 90 days'),
+        ('settled all advances within 120 days', 'settled all advances within 120 days'),
+        ('settled within 145 days', 'settled within 145 days'),
+        ('settled after 145 days', 'settled after 145 days')
+    ]
+    
+    settled_ml = models.CharField(max_length=100, choices=MERCHANDISE_LOAN_SETTLEMENT_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.settled_ml} - Settled Merchandise Loan Performance"     
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
 

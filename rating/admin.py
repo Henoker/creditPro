@@ -6,7 +6,8 @@ from .models import (FinancialRiskParameter, QualityOfFinancialStatements, LoanT
                     IntegrityOfCustomerRiskParameter, OverdraftSwingHighestDebtRiskParameter, 
                     OverdraftSwingLowestDebtRiskParameter, OverdraftTurnoverRiskParameter, 
                     TermLoanCurrentRiskParameter, TermLoanSettledRiskParameter, 
-                    LcFacilitySettlementRiskParameter, LcFacilityTurnoverRiskParameter )
+                    LcFacilitySettlementRiskParameter, LcFacilityTurnoverRiskParameter,
+                    MerchandiseLoanTurnoverRiskParameter, MerchandiseSettlementRiskParameter )
 
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
@@ -179,3 +180,21 @@ class LcFacilityTurnoverRiskParameterAdmin(admin.ModelAdmin):
     list_per_page = 20  
 
 admin.site.register(LcFacilityTurnoverRiskParameter, LcFacilityTurnoverRiskParameterAdmin)
+
+class MerchandiseLoanTurnoverRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('merchandise_turnover', 'score', 'description')
+    list_filter = ('merchandise_turnover',)
+    search_fields = ('merchandise_turnover',)
+    ordering = ('merchandise_turnover',)
+    list_per_page = 20  
+
+admin.site.register(MerchandiseLoanTurnoverRiskParameter, MerchandiseLoanTurnoverRiskParameterAdmin)
+
+class MerchandiseSettlementRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('settled_ml', 'score', 'description')
+    list_filter = ('settled_ml',)
+    search_fields = ('settled_ml',)
+    ordering = ('settled_ml',)
+    list_per_page = 20  
+
+admin.site.register(MerchandiseSettlementRiskParameter, MerchandiseSettlementRiskParameterAdmin)
