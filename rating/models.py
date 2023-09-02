@@ -297,7 +297,64 @@ class MerchandiseSettlementRiskParameter(models.Model):
     description = models.TextField()
     
     def __str__(self):
-        return f"{self.settled_ml} - Settled Merchandise Loan Performance"     
+        return f"{self.settled_ml} - Settled Merchandise Loan Performance"   
+    
+
+     
+class PSEForCoffeeSeasameTurnoverRiskParameter(models.Model):
+       
+    PSECOFFEE_TURNOVER_CHOICES = [
+        ('greater than 2.5 times', 'greater than 2.5 times'),
+        ('2-2.5 times', '2-2.5 times'),
+        ('1.5-2 times', '1.5-2 times'),
+        ('1-1.5 times', '1-1.5 times'),
+        ('0.75-1 times', '0.75-1 times'),
+        ('less than 0.75 times', 'less than 0.75 times')
+    ]
+    
+    pse_coffee_turnover = models.CharField(max_length=100, choices=PSECOFFEE_TURNOVER_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.pse_coffee_turnover} - Preshipment Export facility for coffee and Seasame turnover"
+    
+class PSEForLeathermfgTurnoverRiskParameter(models.Model):
+       
+    PSELEATHER_TURNOVER_CHOICES = [
+        ('greater than 2 times', 'greater than 2 times'),
+        ('1.5-2 times', '1.5-2 times'),
+        ('1.25-1.5 times', '1.25-1.5 times'),
+        ('1-1.25 times', '1-1.25 times'),
+        ('0.5-1 times', '0.5-1 times'),
+        ('less than 0.5 times', 'less than 0.5 times')
+    ]
+    
+    pse_leather_turnover = models.CharField(max_length=100, choices=PSELEATHER_TURNOVER_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.pse_leather_turnover} - Preshipment Export facility for leather and manufacturing turnover"  
+
+class PSEForOtherTradingTurnoverRiskParameter(models.Model):
+       
+    PSEOTHER_TURNOVER_CHOICES = [
+        ('greater than 2.75 times', 'greater than 2.75 times'),
+        ('2-2.75 times', '2.2.75 times'),
+        ('1.5-2 times', '1.5-2 times'),
+        ('1-1.5 times', '1-1.5 times'),
+        ('0.75-1 times', '0.75-1 times'),
+        ('less than 0.75 times', 'less than 0.75 times')
+    ]
+    
+    pse_other_turnover = models.CharField(max_length=100, choices=PSEOTHER_TURNOVER_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.pse_other_turnover} - Preshipment Export facility for other trading turnover"      
+ 
 class LoanType(models.Model):
     name = models.CharField(max_length=100)
 

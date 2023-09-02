@@ -7,7 +7,10 @@ from .models import (FinancialRiskParameter, QualityOfFinancialStatements, LoanT
                     OverdraftSwingLowestDebtRiskParameter, OverdraftTurnoverRiskParameter, 
                     TermLoanCurrentRiskParameter, TermLoanSettledRiskParameter, 
                     LcFacilitySettlementRiskParameter, LcFacilityTurnoverRiskParameter,
-                    MerchandiseLoanTurnoverRiskParameter, MerchandiseSettlementRiskParameter )
+                    MerchandiseLoanTurnoverRiskParameter, MerchandiseSettlementRiskParameter,
+                    PSEForCoffeeSeasameTurnoverRiskParameter, PSEForLeathermfgTurnoverRiskParameter,
+                    PSEForOtherTradingTurnoverRiskParameter
+                )
 
 
 class FinancialRiskParameterAdmin(admin.ModelAdmin):
@@ -198,3 +201,31 @@ class MerchandiseSettlementRiskParameterAdmin(admin.ModelAdmin):
     list_per_page = 20  
 
 admin.site.register(MerchandiseSettlementRiskParameter, MerchandiseSettlementRiskParameterAdmin)
+
+
+class PSEForCoffeeSeasameTurnoverRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('pse_coffee_turnover', 'score', 'description')
+    list_filter = ('pse_coffee_turnover',)
+    search_fields = ('pse_coffee_turnover',)
+    ordering = ('pse_coffee_turnover',)
+    list_per_page = 20  
+
+admin.site.register(PSEForCoffeeSeasameTurnoverRiskParameter, PSEForCoffeeSeasameTurnoverRiskParameterAdmin)
+
+class PSEForLeathermfgTurnoverRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('pse_leather_turnover', 'score', 'description')
+    list_filter = ('pse_leather_turnover',)
+    search_fields = ('pse_leather_turnover',)
+    ordering = ('pse_leather_turnover',)
+    list_per_page = 20  
+
+admin.site.register(PSEForLeathermfgTurnoverRiskParameter, PSEForLeathermfgTurnoverRiskParameterAdmin)
+
+class PSEForOtherTradingTurnoverRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('pse_other_turnover', 'score', 'description')
+    list_filter = ('pse_other_turnover',)
+    search_fields = ('pse_other_turnover',)
+    ordering = ('pse_other_turnover',)
+    list_per_page = 20  
+
+admin.site.register(PSEForOtherTradingTurnoverRiskParameter, PSEForOtherTradingTurnoverRiskParameterAdmin)
