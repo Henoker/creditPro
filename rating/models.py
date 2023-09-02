@@ -353,7 +353,22 @@ class PSEForOtherTradingTurnoverRiskParameter(models.Model):
     description = models.TextField()
     
     def __str__(self):
-        return f"{self.pse_other_turnover} - Preshipment Export facility for other trading turnover"      
+        return f"{self.pse_other_turnover} - Preshipment Export facility for other trading turnover"  
+
+class LetterOfGuaranteeSettlementRiskParameter(models.Model):
+       
+    LG_SETTLEMENT_CHOICES = [
+        ('settled/expired without claim', 'settled/expired without claim'),
+        ('settled/expired after claim', 'settled/expired after claim')
+
+    ]
+    
+    lg_settlement = models.CharField(max_length=100, choices=LG_SETTLEMENT_CHOICES)
+    score = models.PositiveIntegerField()
+    description = models.TextField()
+    
+    def __str__(self):
+        return f"{self.lg_settlement} - Letter of Guarantee facility Settlement Performance"     
  
 class LoanType(models.Model):
     name = models.CharField(max_length=100)

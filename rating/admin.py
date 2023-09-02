@@ -9,7 +9,7 @@ from .models import (FinancialRiskParameter, QualityOfFinancialStatements, LoanT
                     LcFacilitySettlementRiskParameter, LcFacilityTurnoverRiskParameter,
                     MerchandiseLoanTurnoverRiskParameter, MerchandiseSettlementRiskParameter,
                     PSEForCoffeeSeasameTurnoverRiskParameter, PSEForLeathermfgTurnoverRiskParameter,
-                    PSEForOtherTradingTurnoverRiskParameter
+                    PSEForOtherTradingTurnoverRiskParameter, LetterOfGuaranteeSettlementRiskParameter
                 )
 
 
@@ -229,3 +229,12 @@ class PSEForOtherTradingTurnoverRiskParameterAdmin(admin.ModelAdmin):
     list_per_page = 20  
 
 admin.site.register(PSEForOtherTradingTurnoverRiskParameter, PSEForOtherTradingTurnoverRiskParameterAdmin)
+
+class LetterOfGuaranteeSettlementRiskParameterAdmin(admin.ModelAdmin):
+    list_display = ('lg_settlement', 'score', 'description')
+    list_filter = ('lg_settlement',)
+    search_fields = ('lg_settlement',)
+    ordering = ('lg_settlement',)
+    list_per_page = 20  
+
+admin.site.register(LetterOfGuaranteeSettlementRiskParameter, LetterOfGuaranteeSettlementRiskParameterAdmin)
